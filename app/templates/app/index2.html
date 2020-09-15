@@ -1,0 +1,145 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+   
+    <!------ Inclue the above in your HEAD tag ---------->
+    
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    
+
+</head>
+<body>
+    
+    <div class="container register">
+                    <div class="row">
+                        <div class="col-md-3 register-left">
+                            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                            <h3>Welcome</h3>
+                            <p>You are 30 seconds away from earning your own money!</p>
+                            <a href="{% url 'login' %}"><input type="submit" name="" value="Login"/></a><br/>
+                        </div>
+                        <div class="col-md-9 register-right">
+                            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <h3 class="register-heading">Apply as a Employee</h3>
+                                    {% if msg %}
+                                        <p>{{msg}}</p>
+                                    {% endif %}
+                                    <form action="{% url 'register' %}" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="role" id="" value="employee">
+                                    <div class="row register-form">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="fname" class="form-control" placeholder="First Name *" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="lname" class="form-control" placeholder="Last Name *" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password" class="form-control" placeholder="Password *" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="file" name="image" class="form-control" />
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <input type="password" name="cpassword" class="form-control"  placeholder="Confirm Password *" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="maxl">
+                                                    <label class="radio inline"> 
+                                                        <input type="radio" name="gender" value="male" checked>
+                                                        <span> Male </span> 
+                                                    </label>
+                                                    <label class="radio inline"> 
+                                                        <input type="radio" name="gender" value="female">
+                                                        <span>Female </span> 
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="email" name="email" class="form-control" placeholder="Your Email *" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="contact" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
+                                            </div>
+                                            
+                                           
+                                            <input type="submit" class="btnRegister"  value="Register"/>
+                                        </div>
+                                    </div>
+                                </form>
+                                </div>
+                                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <h3  class="register-heading">Apply as a Hirer</h3>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="role" id="" value="hirer">
+                                    <div class="row register-form">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="fname" class="form-control" placeholder="First Name *" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="lname" class="form-control" placeholder="Last Name *" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" name="email" class="form-control" placeholder="Email *" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="contact" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
+                                            </div>
+    
+    
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="password" name="password" class="form-control" placeholder="Password *" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="cpassword" class="form-control" placeholder="Confirm Password *" value="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="maxl">
+                                                    <label class="radio inline"> 
+                                                        <input type="radio" name="gender" value="male" checked>
+                                                        <span> Male </span> 
+                                                    </label>
+                                                    <label class="radio inline"> 
+                                                        <input type="radio" name="gender" value="female">
+                                                        <span>Female </span> 
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                            <input type="submit" class="btnRegister"  value="Register"/>
+                                        </div>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>    
+</body>
+</html>
+

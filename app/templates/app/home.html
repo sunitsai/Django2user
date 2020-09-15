@@ -1,0 +1,49 @@
+<h1>Home Page</h1>
+
+Firstname : {{request.session.Firstname}}
+<br>
+<br>
+Email : {{request.session.email}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Basic Table</h2>
+  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>          
+  {% if hp_key %}  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in hp_key %}
+      <tr>
+        <td>{{i.Firstname}}</td>
+        <td>{{i.Lastname}}</td>
+        <td>{{i.user_id.Email}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  
+  <a href="{% url 'logout' %}"><input type="submit" value="Logout"></a>
+</div>
+
+</body>
+</html>
